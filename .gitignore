@@ -1,0 +1,56 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+frontend/node_modules
+frontend/.pnp
+frontend/.pnp.js
+
+# testing
+frontend/coverage
+
+# production
+frontend/build
+
+# misc
+frontend/.DS_Store
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+backend/user-bank-management/HELP.md
+backend/user-bank-management/target/
+!backend/user-bank-management/.mvn/wrapper/maven-wrapper.jar
+!backend/user-bank-management/**/src/main/**/target/
+!backend/user-bank-management/**/src/test/**/target/
+
+### STS ###
+backend/user-bank-management/.apt_generated
+backend/user-bank-management/.classpath
+backend/user-bank-management/.factorypath
+backend/user-bank-management/.project
+backend/user-bank-management/.settings
+backend/user-bank-management/.springBeans
+backend/user-bank-management/.sts4-cache
+
+### IntelliJ IDEA ###
+backend/user-bank-management/.idea
+backend/user-bank-management/*.iws
+backend/user-bank-management/*.iml
+backend/user-bank-management/*.ipr
+
+### NetBeans ###
+backend/user-bank-management/nbproject/private/
+backend/user-bank-management/nbbuild/
+backend/user-bank-management/dist/
+backend/user-bank-management/nbdist/
+backend/user-bank-management/.nb-gradle/
+backend/user-bank-management/build/
+!backend/user-bank-management/**/src/main/**/build/
+!backend/user-bank-management/**/src/test/**/build/
+
+### VS Code ###
+.vscode/
