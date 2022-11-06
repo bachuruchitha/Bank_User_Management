@@ -15,11 +15,6 @@ import {
 const Register = () => {
   const navigate = useNavigate();
   const [formerrors, setformerrors] = useState({});
-  // const [userid, setuserid] = useState("");
-  // const [password, setpassword] = useState("");
-  // const [firstname, setfirstname] = useState("");
-  // const [lastname, setlastname] = useState("");
-  // const [customer_city, setcustomer_city] = useState("");
   const [customer_date_of_birth, setcustomer_date_of_birth] = useState("");
   const [isSubmit, setisSubmit] = useState(false);
 
@@ -57,11 +52,18 @@ const Register = () => {
       axios
         .post("http://localhost:8080/customer/register", user)
         .then((res) => {
-          console.log(res.data);
+          if(res.data){
+            console.log(res.data);
+            navigate("/login", { replace: true });
+            
+          }
+          else{
+            alert("User already registered Please login");
+          }
+          
         });
     } catch (err) {}
   };
-
   useEffect(() => {
     // console.log(user);
     if (Object.keys(formerrors).length === 0 && isSubmit) {
