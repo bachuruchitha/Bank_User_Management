@@ -31,34 +31,40 @@ public class CustomerController {
 	private CustomerService customerService;
 	@Autowired
 	private AccountService accountService;
-	
+
 	@Autowired
 	private BranchService branchService;
 
 	@PostMapping("/register")
 	public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
 		System.out.println(customer);
-		customerService.saveCustomer(customer);
-		return new ResponseEntity<Customer>(customerService.saveCustomer(customer), HttpStatus.OK);
+		if (customerService.isExist(customer.getCustomer_number())) {
+			System.out.println("Exist"+customer);
+			return null;
+		} else {
+			System.out.println("Not Exist"+customer);
+			return new ResponseEntity<Customer>(customerService.saveCustomer(customer), HttpStatus.OK);
+		}
+
 	}
-	
+
 	@GetMapping("/accountExist")
-	public ResponseEntity<Boolean> getAccountHolders(@RequestParam  String customer_number){
-		return new ResponseEntity<Boolean>(accountService.getAccounts(customer_number),HttpStatus.OK);
-		
+	public ResponseEntity<Boolean> getAccountHolders(@RequestParam String customer_number) {
+		return new ResponseEntity<Boolean>(accountService.getAccounts(customer_number), HttpStatus.OK);
+
 	}
-	
+
 	@PostMapping("/login")
-	public ResponseEntity<Boolean> isValid(@RequestBody Customer customer){
-		
-		return new ResponseEntity<Boolean>(customerService.isValid(customer),HttpStatus.OK);
-		
+	public ResponseEntity<Boolean> isValid(@RequestBody Customer customer) {
+
+		return new ResponseEntity<Boolean>(customerService.isValid(customer), HttpStatus.OK);
+
 	}
+
 	@GetMapping("/getBranches")
-	public ResponseEntity<List<Branch>> getBranches(@RequestParam String customer_number){
-		System.out.println("Customer"+customer_number);
-//		System.out.println(branchService.getBranches(customer_number));
-		return new ResponseEntity<List<Branch>>(branchService.getBranches(customer_number), HttpStatus.OK); 
+	public ResponseEntity<List<Branch>> getBranches(@RequestParam String customer_number) {
+		System.out.println("Customer" + customer_number);
+		return new ResponseEntity<List<Branch>>(branchService.getBranches(customer_number), HttpStatus.OK);
 	}
 
 }

@@ -21,6 +21,11 @@ public class CustomerServiceImpl implements CustomerService {
 	public Boolean isValid(Customer customer) {
 		return customerRepository.findByCustomerNumber(customer.getCustomer_number(), customer.getPassword()).size()==1;
 	}
+	@Override
+	public boolean isExist(String customer_number) {
+		// TODO Auto-generated method stub
+		return customerRepository.findById(customer_number) != null;
+	}
 	
 
 }
